@@ -23,7 +23,7 @@ const EditDisplayTextForm = ({ setDisplayText }) => {
         onChange={(e) => setInputValue(e.target.value)}
       />
       <button
-        className="p-2 px-4 my-4 mx-auto mt-0 md:m-4 md:mt-4 md:ml-2 rounded-md bg-black text-white flex items-center gap-3"
+        className="p-2 px-4 my-4 mx-auto mt-0 md:m-4 md:mt-4 md:ml-2 rounded-md bg-zinc-950 hover:bg-zinc-900 text-zinc-100 flex items-center gap-3"
         type="submit"
       >
         <MdOutlineEdit />

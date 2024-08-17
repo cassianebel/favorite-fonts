@@ -15,7 +15,7 @@ const AddFontForm = ({ handleNewFontSubmit, newFont, setNewFont }) => {
         placeholder="Enter a Google Font name"
       />
       <button
-        className="p-2 px-4 m-4 ml-2 rounded-md bg-black text-white flex items-center gap-3"
+        className="p-2 px-4 m-4 ml-2 rounded-md bg-spring-green-500 text-zinc-900 hover:bg-spring-green-400 transition-colors flex items-center gap-3"
         type="submit"
       >
         <TbHeartFilled />

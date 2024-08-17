@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import AddFontForm from "./Components/AddFontForm";
 import EditDisplayTextForm from "./Components/EditDisplayTextForm";
 import FontDisplay from "./Components/FontDisplay";
+import { GoMoon, GoSun } from "react-icons/go";
 import "./App.css";
 
 // Save fonts to localStorage
@@ -15,12 +16,25 @@ const loadFontsFromLocalStorage = () => {
   return storedFonts ? JSON.parse(storedFonts) : [];
 };
 
+// Load theme from localStorage
+const loadThemeFromLocalStorage = () => {
+  const storedTheme = localStorage.getItem("theme");
+  return storedTheme ? storedTheme : "dark";
+};
+
 const App = () => {
+  const [theme, setTheme] = useState(loadThemeFromLocalStorage);
   const [favoriteFonts, setFavoriteFonts] = useState(loadFontsFromLocalStorage);
   const [newFont, setNewFont] = useState("");
   const [displayText, setDisplayText] = useState(
     "The quick brown fox jumps over the lazy dog."
   );
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
 
   const addFont = (newFont) => {
     if (newFont && !favoriteFonts.includes(newFont)) {
@@ -58,24 +72,33 @@ const App = () => {
   }, [favoriteFonts]);
 
   return (
-    <>
-      <AddFontForm
-        handleNewFontSubmit={handleNewFontSubmit}
-        newFont={newFont}
-        setNewFont={setNewFont}
-      />
+    <div className={theme}>
+      <div className="dark:bg-zinc-900 pt-4 pb-20">
+        <button
+          className="fixed top-4 right-4 p-3  rounded-full bg-spring-green-500 text-zinc-900 hover:bg-spring-green-400 transition-colors"
+          onClick={toggleTheme}
+        >
+          {theme === "light" ? <GoMoon /> : <GoSun />}
+        </button>
 
-      <EditDisplayTextForm
-        displayText={displayText}
-        setDisplayText={setDisplayText}
-      />
+        <AddFontForm
+          handleNewFontSubmit={handleNewFontSubmit}
+          newFont={newFont}
+          setNewFont={setNewFont}
+        />
 
-      <FontDisplay
-        favoriteFonts={favoriteFonts}
-        removeFont={removeFont}
-        displayText={displayText}
-      />
-    </>
+        <EditDisplayTextForm
+          displayText={displayText}
+          setDisplayText={setDisplayText}
+        />
+
+        <FontDisplay
+          favoriteFonts={favoriteFonts}
+          removeFont={removeFont}
+          displayText={displayText}
+        />
+      </div>
+    </div>
   );
 };
 
