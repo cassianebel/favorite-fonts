@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import AddFontForm from "./Components/AddFontForm";
+import EditDisplayTextForm from "./Components/EditDisplayTextForm";
 import FontDisplay from "./Components/FontDisplay";
 import "./App.css";
 
@@ -17,6 +18,9 @@ const loadFontsFromLocalStorage = () => {
 const App = () => {
   const [favoriteFonts, setFavoriteFonts] = useState(loadFontsFromLocalStorage);
   const [newFont, setNewFont] = useState("");
+  const [displayText, setDisplayText] = useState(
+    "The quick brown fox jumps over the lazy dog."
+  );
 
   const addFont = (newFont) => {
     if (newFont && !favoriteFonts.includes(newFont)) {
@@ -25,7 +29,7 @@ const App = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleNewFontSubmit = (e) => {
     e.preventDefault();
     addFont(capitalizeWords(newFont));
   };
@@ -56,12 +60,21 @@ const App = () => {
   return (
     <>
       <AddFontForm
-        handleSubmit={handleSubmit}
+        handleNewFontSubmit={handleNewFontSubmit}
         newFont={newFont}
         setNewFont={setNewFont}
       />
 
-      <FontDisplay favoriteFonts={favoriteFonts} removeFont={removeFont} />
+      <EditDisplayTextForm
+        displayText={displayText}
+        setDisplayText={setDisplayText}
+      />
+
+      <FontDisplay
+        favoriteFonts={favoriteFonts}
+        removeFont={removeFont}
+        displayText={displayText}
+      />
     </>
   );
 };

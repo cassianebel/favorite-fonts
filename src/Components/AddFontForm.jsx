@@ -1,10 +1,10 @@
 import { TbHeartFilled } from "react-icons/tb";
 
-const AddFontForm = ({ handleSubmit, newFont, setNewFont }) => {
+const AddFontForm = ({ handleNewFontSubmit, newFont, setNewFont }) => {
   return (
     <form
       id="add-font-form"
-      onSubmit={handleSubmit}
+      onSubmit={handleNewFontSubmit}
       className="mx-auto my-4 w-fit rounded-md bg-zinc-500 flex items-center"
     >
       <input
