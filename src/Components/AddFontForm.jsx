@@ -5,10 +5,10 @@ const AddFontForm = ({ handleNewFontSubmit, newFont, setNewFont }) => {
     <form
       id="add-font-form"
       onSubmit={handleNewFontSubmit}
-      className="mx-auto my-4 w-fit rounded-md bg-zinc-500 flex items-center"
+      className="mx-auto my-4 max-w-md rounded-md md:bg-zinc-500 flex items-center"
     >
       <input
-        className="p-2 px-4 m-4 mr-2  rounded-md border-2 border-black "
+        className="p-2 px-4 m-4 mr-2 grow rounded-md border-2 border-black "
         type="text"
         value={newFont}
         onChange={(e) => setNewFont(e.target.value)}

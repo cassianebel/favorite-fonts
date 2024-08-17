@@ -13,7 +13,7 @@ const EditDisplayTextForm = ({ setDisplayText }) => {
     <form
       id="edit-display-text-form"
       onSubmit={handleSubmit}
-      className="mx-5 md:mx-40 my-4 pb-2 md:pb-0 rounded-md bg-zinc-500 md:flex items-center"
+      className="mx-5 lg:mx-40 my-4 pb-2 md:pb-0 rounded-md md:bg-zinc-500 md:flex items-center"
     >
       <input
         className="grow w-11/12 md:w-auto p-2 px-4 m-4 mr-2 rounded-md border-2 border-black"
