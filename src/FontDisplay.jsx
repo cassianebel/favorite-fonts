@@ -12,14 +12,14 @@ const FontDisplay = ({ favoriteFonts, removeFont }) => (
         </p>
         <div className="flex justify-center">
           <a
-            className="p-2 px-4 m-4 rounded-md bg-violet-700 text-white flex items-center gap-3"
+            className="p-2 px-4 m-4 rounded-md border-2 border-violet-700 text-violet-700 flex items-center gap-2"
             href={`https://fonts.google.com/specimen/${font}`}
             target="_blank"
           >
             <TbExternalLink /> get {font.replace(/\+/g, " ")}
           </a>
           <button
-            className="p-2 px-4 m-4 rounded-md bg-black text-white flex items-center gap-3"
+            className="p-2 px-4 m-4 rounded-md border-2  border-black flex items-center gap-2"
             onClick={() => removeFont(font)}
           >
             <TbHeartBroken /> remove {font.replace(/\+/g, " ")}
