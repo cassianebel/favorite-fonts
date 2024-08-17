@@ -73,7 +73,7 @@ const App = () => {
 
   return (
     <div className={theme}>
-      <div className="dark:bg-zinc-900 pt-4 pb-20">
+      <div className="dark:bg-zinc-900 pt-4 pb-20 min-h-screen">
         <button
           className="fixed top-4 right-4 p-3  rounded-full bg-spring-green-500 text-zinc-900 hover:bg-spring-green-400 transition-colors"
           onClick={toggleTheme}
