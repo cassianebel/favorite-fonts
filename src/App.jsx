@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import FontDisplay from "./FontDisplay";
-import { TbHeartFilled } from "react-icons/tb";
+import AddFontForm from "./Components/AddFontForm";
+import FontDisplay from "./Components/FontDisplay";
 import "./App.css";
 
 // Save fonts to localStorage
@@ -27,11 +27,20 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addFont(newFont);
+    addFont(capitalizeWords(newFont));
   };
 
   const removeFont = (fontToRemove) => {
     setFavoriteFonts(favoriteFonts.filter((font) => font !== fontToRemove));
+  };
+
+  const capitalizeWords = (str) => {
+    return str
+      .split(" ")
+      .map((word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      })
+      .join(" ");
   };
 
   useEffect(() => {
@@ -46,26 +55,11 @@ const App = () => {
 
   return (
     <>
-      <form
-        id="add-font-form"
-        onSubmit={handleSubmit}
-        className="mx-auto my-4 w-fit rounded-md bg-zinc-500 flex items-center"
-      >
-        <input
-          className="p-2 px-4 m-4 mr-2  rounded-md border-2 border-black "
-          type="text"
-          value={newFont}
-          onChange={(e) => setNewFont(e.target.value)}
-          placeholder="Enter font name"
-        />
-        <button
-          className="p-2 px-4 m-4 ml-2 rounded-md bg-black text-white flex items-center gap-3"
-          type="submit"
-        >
-          <TbHeartFilled />
-          Add Font
-        </button>
-      </form>
+      <AddFontForm
+        handleSubmit={handleSubmit}
+        newFont={newFont}
+        setNewFont={setNewFont}
+      />
 
       <FontDisplay favoriteFonts={favoriteFonts} removeFont={removeFont} />
     </>
